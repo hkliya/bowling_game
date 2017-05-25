@@ -29,7 +29,16 @@ public class BowlingGame {
         ArrayList<Frame> frames = new ArrayList<Frame>();
         for (int index = 0; index < FRAME_COUNT; index++) {
             List<Integer> balls = new ArrayList<Integer>();
-            balls.add(getBottleCount(framesStr[index]));
+            String[] ballString = framesStr[index].split("");
+            if (framesStr[index].endsWith("/")) {
+                Integer firstBall = getBottleCount(ballString[0]);
+                balls.add(firstBall);
+                balls.add(10 - firstBall);
+            } else {
+                for (String ballStr : ballString) {
+                    balls.add(getBottleCount(ballStr));
+                }
+            }
             frames.add(new Frame(balls));
         }
         for (String extraBall : extraBallsStr) {
@@ -41,18 +50,29 @@ public class BowlingGame {
     }
 
     private Integer getBottleCount(String ballStr) {
-        return 10;
+        if (ballStr.equals("X")) {
+            return 10;
+        }
+        return Integer.valueOf(ballStr);
     }
 
     private int getExtraScore(int index) {
         List<Integer> extraBalls = getExtraBalls(frames, index);
-        return extraBalls.get(0) + extraBalls.get(1);
+        int extraBallCount = frames.get(index).getExtraBallCount();
+        if (extraBallCount == 2) {
+            return extraBalls.get(0) + extraBalls.get(1);
+        }
+        if (extraBallCount == 1) {
+            return extraBalls.get(0);
+        }
+        return 0;
     }
-
     private List<Integer> getExtraBalls(List<Frame> frames, int index) {
         List<Integer> balls = new ArrayList<Integer>();
         balls.addAll(frames.get(index + 1).getBalls());
-        balls.addAll(frames.get(index + 2).getBalls());
+        if (frames.size() == 12) {
+            balls.addAll(frames.get(index + 2).getBalls());
+        }
         return balls;
     }
 }

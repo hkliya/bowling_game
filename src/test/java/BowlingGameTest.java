@@ -11,8 +11,7 @@ public class BowlingGameTest {
 
     @Test
     public void test_second_spare() throws Exception {
-        String bowlingCode = "5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5";  //150
-        assertEquals(new BowlingGame().getBowlingScore(bowlingCode), 150);
+        assertEquals(150, new BowlingGame().getBowlingScore("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5"));
     }
 
     @Test
