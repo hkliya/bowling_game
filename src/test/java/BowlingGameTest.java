@@ -22,6 +22,7 @@ public class BowlingGameTest {
     @Test
     public void test_other_situation() throws Exception {
         assertEquals(167, new BowlingGame().getBowlingScore("X|7/|9-|X|-8|8/|-6|X|X|X||81"));
+        assertEquals(165, new BowlingGame().getBowlingScore("X|X|5/|5/|5/|5/|5/|5/|5/|5/||5"));
     }
 }
 

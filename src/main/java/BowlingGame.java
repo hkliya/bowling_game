@@ -90,10 +90,11 @@ public class BowlingGame {
 
     private List<Integer> getExtraBalls(List<Frame> frames, int index) {
         List<Integer> balls = new ArrayList<Integer>();
-        if (frames.size() == 11) {
+        if (index + 1 < frames.size()) {
             balls.addAll(frames.get(index + 1).getBalls());
-        } else if (frames.size() == 12) {
-            balls.addAll(frames.get(index + 1).getBalls());
+        }
+
+        if (index + 2 < frames.size()) {
             balls.addAll(frames.get(index + 2).getBalls());
         }
         return balls;
