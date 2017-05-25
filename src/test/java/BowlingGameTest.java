@@ -6,8 +6,7 @@ public class BowlingGameTest {
 
     @Test
     public void test_all_strike() throws Exception {
-        String bowlingCode = "X|X|X|X|X|X|X|X|X|X||XX";           //300
-        assertEquals(new BowlingGame().getBowlingScore(bowlingCode), 300);
+        assertEquals(300, new BowlingGame().getBowlingScore("X|X|X|X|X|X|X|X|X|X||XX"));
     }
 
     @Test
