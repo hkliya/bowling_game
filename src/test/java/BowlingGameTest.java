@@ -16,9 +16,7 @@ public class BowlingGameTest {
 
     @Test
     public void test_second_miss() throws Exception {
-        String bowlingCode = "9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||";   //90
-        assertEquals(new BowlingGame().getBowlingScore(bowlingCode), 90);
-
+        assertEquals(90, new BowlingGame().getBowlingScore("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||"));
     }
 
     @Test
