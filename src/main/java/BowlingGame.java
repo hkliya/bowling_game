@@ -44,7 +44,7 @@ public class BowlingGame {
         for (int index = 0; index < FRAME_COUNT; index++) {
             List<Integer> balls = new ArrayList<Integer>();
             String[] ballString = framesStr[index].split("");
-            if (framesStr[index].endsWith("/")) {
+            if (isSpare(framesStr[index])) {
                 Integer firstBall = getBottleCount(ballString[0]);
                 balls.add(firstBall);
                 balls.add(10 - firstBall);
@@ -55,6 +55,10 @@ public class BowlingGame {
             }
             frames.add(new Frame(balls));
         }
+    }
+
+    private boolean isSpare(String s) {
+        return s.endsWith("/");
     }
 
     private void addExtraBalls(String[] extraBallsStr, ArrayList<Frame> frames) {
